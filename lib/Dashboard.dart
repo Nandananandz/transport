@@ -50,7 +50,7 @@ class _DashboardState extends State<Dashboard> {
           BottomNavigationBarItem(
             icon: Image.asset(
               "assets/bottompro.png",
-              color: (indexNum != 4) ? Color(0xff5E5F60) : Color(0xff036163),
+              color: (indexNum != 2) ? Color(0xff5E5F60) : Color(0xff036163),
               height: 4.h,
             ),
             label: "Profile",
