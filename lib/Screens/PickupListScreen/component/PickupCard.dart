@@ -185,6 +185,134 @@ Row(
               SizedBox(
                 height: 2.w,
               ),
+               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                      width: 1.7.h,
+                      height: 1.7.h,
+                      child: Image.asset("assets/mrf.png")),
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  SizedBox(
+                    width: 39.4.w,
+                    child: Text(
+                      "MRF ",
+                      style: GoogleFonts.lexend(
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff6A6A6A)),
+                    ),
+                  ),
+                  Text(
+                    "JOB",
+                    textAlign: TextAlign.end,
+                    style: GoogleFonts.lexend(
+                        fontSize: 11.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff000000)),
+                  ),
+                  Expanded(child: Container()),
+                ],
+              ),
+              SizedBox(
+                height: 2.w,
+              ),
+              Container(
+                width: 80.w,
+                height: 0.01.h,
+                color: Colors.black.withOpacity(0.2.w),
+              ),
+               SizedBox(
+                height: 2.w,
+              ),
+               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                      width: 1.7.h,
+                      height: 1.7.h,
+                      child: Image.asset("assets/driver.png")),
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  SizedBox(
+                    width: 39.4.w,
+                    child: Text(
+                      "Driver ",
+                      style: GoogleFonts.lexend(
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff6A6A6A)),
+                    ),
+                  ),
+                  Text(
+                    "NAME",
+                    textAlign: TextAlign.end,
+                    style: GoogleFonts.lexend(
+                        fontSize: 11.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff000000)),
+                  ),
+                  Expanded(child: Container()),
+                ],
+              ),
+               SizedBox(
+                height: 2.w,
+              ),
+              
+              
+              Container(
+                width: 80.w,
+                height: 0.01.h,
+                color: Colors.black.withOpacity(0.2.w),
+              ),
+              SizedBox(
+                height: 2.w,
+              ),
+               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                      width: 1.7.h,
+                      height: 1.7.h,
+                      child: Image.asset("assets/vechicle.png")),
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  SizedBox(
+                    width: 39.4.w,
+                    child: Text(
+                      "Vechicle No ",
+                      style: GoogleFonts.lexend(
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff6A6A6A)),
+                    ),
+                  ),
+                  Text(
+                    "NUMBER",
+                    textAlign: TextAlign.end,
+                    style: GoogleFonts.lexend(
+                        fontSize: 11.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff000000)),
+                  ),
+                  Expanded(child: Container()),
+                ],
+              ),
+               SizedBox(
+                height: 2.w,
+              ),
+              Container(
+                width: 80.w,
+                height: 0.01.h,
+                color: Colors.black.withOpacity(0.2.w),
+              ),
+              SizedBox(
+                height: 2.w,
+              ),
               Row(
                 children: [
                   SizedBox(
@@ -221,20 +349,7 @@ Row(
                       color: Color(0xff000000)),
                 ),
               ),
-              SizedBox(
-                height: 3.h,
-              ),
-              Container(
-                width: 33.8.w,
-                height: 4.h,
-                alignment: Alignment.center,
-              //  margin: EdgeInsets.only(left: 2.w),
-                decoration: BoxDecoration(
            
-            color: Color.fromRGBO(2, 97, 99, 1) ,
-            borderRadius: BorderRadius.circular(0.9.h)),
-        child: Text("Assign",style: GoogleFonts.lexend(fontWeight: FontWeight.w500,fontSize: 11.sp,color: Colors.white),),
-              ),
                SizedBox(
                 height: 4.h,
               ),
