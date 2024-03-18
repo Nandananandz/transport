@@ -31,27 +31,39 @@ class _DashboardState extends State<Dashboard> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset(
-              "assets/Home.png",
-              color: (indexNum != 0) ? Color(0xff5E5F60) : Color(0xff036163),
-              height: 4.h,
+            icon: SizedBox(
+              width: 7.w,
+              height: 7.w,
+              child: Image.asset(
+                "assets/Home.png",
+                color: (indexNum != 0) ? Color(0xff5E5F60) : Color(0xff036163),
+                height: 4.h,
+              ),
             ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              "assets/pickup.png",
-              height: 4.h,
-              color: (indexNum != 1) ? Color(0xff5E5F60) : Color(0xff036163),
+            icon: SizedBox(
+              width: 7.w,
+              height: 7.w,
+              child: Image.asset(
+                "assets/pickup.png",
+                height: 4.h,
+                color: (indexNum != 1) ? Color(0xff5E5F60) : Color(0xff036163),
+              ),
             ),
             label: "Pickup",
           ),
           
           BottomNavigationBarItem(
-            icon: Image.asset(
-              "assets/bottompro.png",
-              color: (indexNum != 4) ? Color(0xff5E5F60) : Color(0xff036163),
-              height: 4.h,
+            icon: SizedBox(
+              width: 7.w,
+              height: 7.w,
+              child: Image.asset(
+                "assets/bottompro.png",
+                color: (indexNum != 4) ? Color(0xff5E5F60) : Color(0xff036163),
+                height: 4.h,
+              ),
             ),
             label: "Profile",
           ),
