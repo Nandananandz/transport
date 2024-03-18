@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                     Positioned(
                         left: 4.7.w,
                         right: 4.7.w,
-                        top: 35.5.h,
+                        top: 28.5.h,
                         bottom: 5,
                         child: JobListCard()),
              
