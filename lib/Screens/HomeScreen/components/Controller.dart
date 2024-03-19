@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +32,22 @@ class homeController extends GetxController {
 
   loadMrf() async {}
 
-  loadDirverList() async {}
+  loadDirverList() async {
+            print("loadDriverList");
+           
+            final Response = await get(Uri.parse(baseUrl+"/api/users?uesr_type=drivers"),
+           headers: {
+        'contentType': 'application/json',
+        "Authorization": "Bearer $token"
+      },);
+      print(Response.body);
+      if (Response.statusCode==200){
+        var jsonData = json.decode(Response.body);
+        driverList = jsonData["data"];
+        update();
+      }
+
+  }
 
   @override
   void onInit() {
