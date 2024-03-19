@@ -8,15 +8,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:transportcordinate/Dashboard.dart';
+import 'package:transportcordinate/Screens/LoginScreen/Controler.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-  //LoginController authCtrl = Get.put(LoginController()); // controller call
+  LoginController authCtrl = Get.put(LoginController()); // controller call
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(body: SingleChildScrollView(
+        child: GetBuilder<LoginController>(builder: (_) {
       
-        child:  Column(
+        return Column(
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
@@ -141,6 +143,8 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 0.4.h)
           ],
+        );
+        }
         ),
     ),
     ),
