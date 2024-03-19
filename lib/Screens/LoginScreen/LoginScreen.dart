@@ -102,9 +102,17 @@ class LoginScreen extends StatelessWidget {
             Center(
               child: InkWell(
                 onTap: () {
+                   if (authCtrl.emailController.text.isEmpty) {
+                    Fluttertoast.showToast(msg: "Please enter mail id");
+                    return;
+                  } else if (authCtrl.passwordController.text.isEmpty) {
+                    Fluttertoast.showToast(msg: "Please enter your password");
+                    return;
+                  } else {
+                    authCtrl.loginSend();
+                  }
                   
-                  //login button click
-                    Get.to(()=>Dashboard());
+                  
                 },
                 child: Container(
                   width: 84.2.w,
@@ -115,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(0.9.h)),
                   child: //(authCtrl.loading)
                       //LoadingAnimationWidget.staggeredDotsWave(
-                        //  color: Colors.white, size: 24)
+                        //  color: Colors.white, size: 24),
                        Text("Login",
                           style: GoogleFonts.lexend(
                             textStyle: TextStyle(
