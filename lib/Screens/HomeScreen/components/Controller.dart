@@ -11,6 +11,8 @@ class homeController extends GetxController {
   String name = "";
   bool islogin = false;
   TextEditingController reasonController = TextEditingController();
+  
+  get pref => null;
 
   getdata() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -29,7 +31,14 @@ class homeController extends GetxController {
   List MrfList = [];
   List driverList = [];
 
-  loadMrf() async {}
+  loadMrf() async {
+    
+    print("Load plants ");
+    final String token = pref.getString('token') ?? "";
+    final Response = await get(Uri.parse(baseUrl + "mrf-facility/3/plants"),
+    );
+    
+  }
 
   loadDirverList() async {}
 
@@ -49,10 +58,9 @@ class homeController extends GetxController {
     );
     print(Response.body);
     if (Response.statusCode == 200) {
-      var data = json.decode(Response.body);
-      print(data[data]);
-      print(Response.body);
-      joblist = data["data"];
+      var jsonData = json.decode(Response.body);
+     
+      joblist = jsonData["data"];
       update();
     }
     print(joblist);
