@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:transportcordinate/Screens/HomeScreen/components/Controller.dart';
+import 'package:transportcordinate/Screens/PickupListScreen/MrfCard.dart';
 
 class JobSheetCard extends StatelessWidget {
-  const JobSheetCard({super.key});
+   int JobStatus;
+  var jobData;
+   JobSheetCard({super.key,required this.JobStatus,required this.jobData});
+  homeController homeCtcrl = Get.put(homeController());
+ 
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 91.w,
-                  
+             height: 30.h,     
                    margin: EdgeInsets.symmetric(vertical: 2.5),
         decoration: BoxDecoration(
             border: Border.all(
@@ -41,7 +50,7 @@ class JobSheetCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "#30",// + jdata["id"].toString(),
+                       jobData["id"].toString(),
                       style: GoogleFonts.lexend(
                           fontSize: 11.sp,
                           fontWeight: FontWeight.w600,
@@ -84,7 +93,7 @@ class JobSheetCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "04-03-2023",
+                     jobData["date"].toString(),
                     textAlign: TextAlign.end,
                     style: GoogleFonts.lexend(
                         fontSize: 11.sp,
@@ -126,7 +135,7 @@ Row(
                     ),
                   ),
                   Text(
-                   "MIXED WASTE",
+                    jobData["material_type"].toString(),
                     style: GoogleFonts.lexend(
                         fontSize: 11.sp,
                         fontWeight: FontWeight.w600,
@@ -166,7 +175,7 @@ Row(
                     ),
                   ),
                   Text(
-                    "1000 KG",
+                     jobData["weight"].toString(),
                     style: GoogleFonts.lexend(
                         fontSize: 11.sp,
                         fontWeight: FontWeight.w600,
@@ -213,8 +222,8 @@ Row(
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Logidots Technologies,Atomic building ,kazhakootam",
-                //  jdata["collection_point_data"]["name"].toString(),
+                
+                 jobData["collection_point_data"]["name"].toString(),
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lexend(
                       fontSize: 11.sp,
@@ -225,16 +234,20 @@ Row(
               SizedBox(
                 height: 3.h,
               ),
-              Container(
-                width: 33.8.w,
-                height: 4.h,
-                alignment: Alignment.center,
-              //  margin: EdgeInsets.only(left: 2.w),
-                decoration: BoxDecoration(
-           
-            color: Color.fromRGBO(2, 97, 99, 1) ,
-            borderRadius: BorderRadius.circular(0.9.h)),
-        child: Text("Assign",style: GoogleFonts.lexend(fontWeight: FontWeight.w500,fontSize: 11.sp,color: Colors.white),),
+              InkWell(
+                onTap: ()
+                {showDialog(context: context, builder: ((context) => MrfCard()));},
+                child: Container(
+                  width: 33.8.w,
+                  height: 4.h,
+                  alignment: Alignment.center,
+                //  margin: EdgeInsets.only(left: 2.w),
+                  decoration: BoxDecoration(
+                           
+                            color: Color.fromRGBO(2, 97, 99, 1) ,
+                            borderRadius: BorderRadius.circular(0.9.h)),
+                        child: Text("Assign",style: GoogleFonts.lexend(fontWeight: FontWeight.w500,fontSize: 11.sp,color: Colors.white),),
+                ),
               ),
                SizedBox(
                 height: 4.h,
