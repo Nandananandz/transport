@@ -23,7 +23,7 @@ class _PickupListScreenState extends State<PickupListScreen> {
   List jobList = [];
   loadJobsAssigned() async {
     final Response = await get(
-      Uri.parse(baseUrl + "jobs/${hctrl.id}/list-jobs?status=assigned"),
+      Uri.parse(baseUrl + "jobs/${hctrl.id}/list-jobs"),
       headers: {"Authorization": "Bearer ${hctrl.token}"},
     );
     print(Response.body);
@@ -36,6 +36,13 @@ class _PickupListScreenState extends State<PickupListScreen> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadJobsAssigned();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -45,11 +52,13 @@ class _PickupListScreenState extends State<PickupListScreen> {
         Expanded(
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 for (var data in jobList)
-                  pickupCard(
-                    jdata: data,
-                  ),
+                  if (data["TrackingStatus"] != "initated")
+                    pickupCard(
+                      jdata: data,
+                    ),
                 SizedBox(
                   height: 2.h,
                 ),

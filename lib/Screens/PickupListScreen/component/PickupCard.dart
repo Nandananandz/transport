@@ -9,8 +9,8 @@ class pickupCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 91.w,
-      margin: EdgeInsets.symmetric(vertical: 2.5),
+      width: 100.w,
+      margin: EdgeInsets.symmetric(vertical: 2.5, horizontal: 4.2.w),
       decoration: BoxDecoration(
           border: Border.all(
             color: Color(0xff007C58).withOpacity(0.03.w),
@@ -81,7 +81,7 @@ class pickupCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "04-03-2023",
+                jdata["date"].toString(),
                 textAlign: TextAlign.end,
                 style: GoogleFonts.lexend(
                     fontSize: 11.sp,
@@ -122,7 +122,7 @@ class pickupCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "MIXED WASTE",
+                jdata["material_type"].toString(),
                 style: GoogleFonts.lexend(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w600,
@@ -162,7 +162,7 @@ class pickupCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "1000 KG",
+                jdata["weight"].toString(),
                 style: GoogleFonts.lexend(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w600,
@@ -203,7 +203,7 @@ class pickupCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "JOB",
+                jdata["mrfJob"] ?? "--:--",
                 textAlign: TextAlign.end,
                 style: GoogleFonts.lexend(
                     fontSize: 11.sp,
@@ -245,7 +245,9 @@ class pickupCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "NAME",
+                (jdata["driver_data"] == null)
+                    ? "--:--"
+                    : jdata["driver_data"]["name"],
                 textAlign: TextAlign.end,
                 style: GoogleFonts.lexend(
                     fontSize: 11.sp,
@@ -287,7 +289,7 @@ class pickupCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "NUMBER",
+                jdata["vehicle_no"].toString().replaceAll("null", "--:--:--"),
                 textAlign: TextAlign.end,
                 style: GoogleFonts.lexend(
                     fontSize: 11.sp,
@@ -335,7 +337,7 @@ class pickupCard extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Logidots Technologies,Atomic building ,kazhakootam",
+              jdata["collection_point_data"]["name"].toString(),
               //  jdata["collection_point_data"]["name"].toString(),
               textAlign: TextAlign.start,
               style: GoogleFonts.lexend(

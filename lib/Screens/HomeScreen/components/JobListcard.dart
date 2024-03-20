@@ -10,16 +10,19 @@ class JobListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-              child: Column(
-    children: [
-      for (var data in homeCtcrl.joblist)
-       JobSheetCard(
-        jobData: data,
-        JobStatus: 0,
-       ),
-    ],
-              ),
-            );
+    return GetBuilder<homeController>(builder: (context) {
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            for (var data in homeCtcrl.joblist)
+              if (data["TrackingStatus"] == "initiated")
+                JobSheetCard(
+                  jobData: data,
+                  JobStatus: 0,
+                ),
+          ],
+        ),
+      );
+    });
   }
 }

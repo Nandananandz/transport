@@ -200,6 +200,7 @@ class MrfCard extends StatelessWidget {
                       if (Response.statusCode == 200 ||
                           Response.statusCode == 201) {
                         Navigator.of(context).pop();
+                        hctrl.joblist;
                         Fluttertoast.showToast(
                             msg: "Assign Successfully Completed");
                       } else {

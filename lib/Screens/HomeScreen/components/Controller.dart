@@ -78,8 +78,11 @@ class homeController extends GetxController {
   void getjoblist() async {
     print(baseUrl + "jobs/$id/list-jobs");
     print(token);
+    print(
+      Uri.parse(baseUrl + "jobs/$id/list-jobs"),
+    );
     final Response = await get(
-      Uri.parse(baseUrl + "jobs/$id/list-jobs?status=initiated"),
+      Uri.parse(baseUrl + "jobs/$id/list-jobs"),
       headers: {"Authorization": "Bearer $token"},
     );
     print(Response.body);
@@ -87,6 +90,10 @@ class homeController extends GetxController {
       var jsonData = json.decode(Response.body);
 
       joblist = jsonData["data"];
+      // for (var data in jsonData["data"]) {
+
+      //   if ()
+      // }
       update();
     }
     print(joblist);
