@@ -66,25 +66,25 @@ class _PickupListScreenState extends State<PickupListScreen> {
             ),
           ),
         ),
-        // CircleAvatar(
-        //   radius: 6.w,
-        //   backgroundColor: Color(0xff036163),
-        //   child: SizedBox(
-        //     child: InkWell(
-        //       onTap: () {
-        //         showDialog(
-        //             context: context,
-        //             builder: (context) => Padding(
-        //                   padding: MediaQuery.of(context).viewInsets,
-        //                   child: MrfCard(
-        //                     jobID: 12,
-        //                     //type: type,
-        //                   ),
-        //                 ));
-        //       },
-        //     ),
-        //   ),
-        // ),
+        //CircleAvatar(
+          // radius: 6.w,
+          // backgroundColor: Color(0xff036163),
+           //child: SizedBox(
+             //child: InkWell(
+               //onTap: () {
+                 //showDialog(
+                   //  context: context,
+                     //builder: (context) => Padding(
+                       //    padding: MediaQuery.of(context).viewInsets,
+                         // child: MrfCard(
+                           //  jobID: 12,
+                             ////type: type,
+                           //),
+                         //));
+              // },
+             //),
+          // ),
+         //),
       ],
     );
   }
