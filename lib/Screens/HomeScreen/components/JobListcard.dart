@@ -15,8 +15,8 @@ class JobListCard extends StatelessWidget {
         child: Column(
           children: [
             for (var data in homeCtcrl.joblist)
-              if (data["TrackingStatus"] == "initiated")
-                JobSheetCard(
+              //if (data["TrackingStatus"] == "initiated")
+              JobSheetCard(
                   jobData: data,
                   JobStatus: 0,
                 ),

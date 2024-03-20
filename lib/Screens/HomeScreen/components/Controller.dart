@@ -76,7 +76,7 @@ class homeController extends GetxController {
   }
 
   void getjoblist() async {
-    print(baseUrl + "jobs/$id/list-jobs");
+    print(baseUrl + "jobs/$id/list-jobs?status=intiated");
     print(token);
     print(
       Uri.parse(baseUrl + "jobs/$id/list-jobs"),

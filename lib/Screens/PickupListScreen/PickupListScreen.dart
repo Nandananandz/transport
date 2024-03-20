@@ -23,7 +23,7 @@ class _PickupListScreenState extends State<PickupListScreen> {
   List jobList = [];
   loadJobsAssigned() async {
     final Response = await get(
-      Uri.parse(baseUrl + "jobs/${hctrl.id}/list-jobs"),
+      Uri.parse(baseUrl + "jobs/119/list-jobs?status=assigned"),
       headers: {"Authorization": "Bearer ${hctrl.token}"},
     );
     print(Response.body);
@@ -55,12 +55,13 @@ class _PickupListScreenState extends State<PickupListScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 for (var data in jobList)
-                  if (data["TrackingStatus"] != "initated")
+                  //if (data["TrackingStatus"] != "initated")
+
                     pickupCard(
                       jdata: data,
                     ),
                 SizedBox(
-                  height: 2.h,
+                  height: 3.h,
                 ),
               ],
             ),
