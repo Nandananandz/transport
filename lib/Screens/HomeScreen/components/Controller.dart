@@ -12,7 +12,7 @@ class homeController extends GetxController {
   String name = "";
   bool islogin = false;
   TextEditingController reasonController = TextEditingController();
-  
+
   get pref => null;
 
   getdata() async {
@@ -31,31 +31,41 @@ class homeController extends GetxController {
   List joblist = [];
   List MrfList = [];
   List driverList = [];
+  var selectedDriver;
+  var selectedmrf;
+  bool assignloading = false;
 
   loadMrf() async {
-    
-    print("Load plants ");
-    final String token = pref.getString('token') ?? "";
-    final Response = await get(Uri.parse(baseUrl + "mrf-facility/3/plants"),
+    //final String token = pref.getString('token') ?? "";
+    final Response = await get(
+      Uri.parse(baseUrl + "mrf-facilities"),
+      headers: {"Authorization": "Bearer $token"},
     );
-    
+
+    if (Response.statusCode == 200) {
+      MrfList = json.decode(Response.body)["data"];
+    }
+    print("Load plants ");
+    print(Response.body);
+    print(Response.statusCode);
   }
 
   loadDirverList() async {
-            print("loadDriverList");
-           
-            final Response = await get(Uri.parse(baseUrl+"/api/users?uesr_type=drivers"),
-           headers: {
+    final Response = await get(
+      Uri.parse(baseUrl + "users?uesr_type=drivers"),
+      headers: {
         'contentType': 'application/json',
         "Authorization": "Bearer $token"
-      },);
-      print(Response.body);
-      if (Response.statusCode==200){
-        var jsonData = json.decode(Response.body);
-        driverList = jsonData["data"];
-        update();
-      }
-
+      },
+    );
+    print(token);
+    print("loadDriverList");
+    print(Response.body);
+    if (Response.statusCode == 200) {
+      var jsonData = json.decode(Response.body);
+      driverList = jsonData["data"];
+      update();
+    }
   }
 
   @override
@@ -68,15 +78,22 @@ class homeController extends GetxController {
   void getjoblist() async {
     print(baseUrl + "jobs/$id/list-jobs");
     print(token);
+    print(
+      Uri.parse(baseUrl + "jobs/$id/list-jobs"),
+    );
     final Response = await get(
-      Uri.parse(baseUrl + "jobs/$id/list-jobs?status=initiated"),
+      Uri.parse(baseUrl + "jobs/$id/list-jobs"),
       headers: {"Authorization": "Bearer $token"},
     );
     print(Response.body);
     if (Response.statusCode == 200) {
       var jsonData = json.decode(Response.body);
-     
+
       joblist = jsonData["data"];
+      // for (var data in jsonData["data"]) {
+
+      //   if ()
+      // }
       update();
     }
     print(joblist);
