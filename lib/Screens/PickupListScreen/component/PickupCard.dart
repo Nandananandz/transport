@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
 class pickupCard extends StatelessWidget {
-  const pickupCard({super.key});
+  var jdata;
+  pickupCard({super.key, required this.jdata});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class pickupCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "#30", // + jdata["id"].toString(),
+                "#" + jdata["id"].toString(),
                 style: GoogleFonts.lexend(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w600,
