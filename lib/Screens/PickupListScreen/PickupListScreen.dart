@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:transportcordinate/Screens/PickupListScreen/component/PickupCard
 import 'package:transportcordinate/main.dart';
 //import 'package:transportcordinate/Screens/PickupListScreen/component/PickupCard.dart';
 
-class PickupListScreen extends StatefulWidget {
+ class PickupListScreen extends StatefulWidget {
   PickupListScreen({super.key});
 
   @override
@@ -21,7 +22,7 @@ class _PickupListScreenState extends State<PickupListScreen> {
   List driverList = [];
   homeController hctrl = Get.put(homeController());
   List jobList = [];
-  loadJobsAssigned() async {
+   loadJobsAssigned() async {
     final Response = await get(
       Uri.parse(baseUrl + "jobs/119/list-jobs?status=assigned"),
       headers: {"Authorization": "Bearer ${hctrl.token}"},
@@ -41,52 +42,64 @@ class _PickupListScreenState extends State<PickupListScreen> {
     super.initState();
     loadJobsAssigned();
   }
+  
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 3.h,
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                for (var data in jobList)
-                  //if (data["TrackingStatus"] != "initated")
-
-                    pickupCard(
-                      jdata: data,
-                    ),
-                SizedBox(
-                  height: 3.h,
-                ),
-              ],
+    return 
+    
+  // RefreshIndicator(
+     // onRefresh:() {
+          //  Completer<void> completer = Completer<void>();
+            //_refreshData().then((_) {
+            //  completer.complete();
+           // });
+           // return completer.future;
+       ///   },
+       Column(
+        children: [
+          SizedBox(
+            height: 3.h,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  for (var data in jobList)
+                    //if (data["TrackingStatus"] != "initated")
+      
+                      pickupCard(
+                        jdata: data,
+                      ),
+                  SizedBox(
+                    height: 3.h,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        //CircleAvatar(
-          // radius: 6.w,
-          // backgroundColor: Color(0xff036163),
-           //child: SizedBox(
-             //child: InkWell(
-               //onTap: () {
-                 //showDialog(
-                   //  context: context,
-                     //builder: (context) => Padding(
-                       //    padding: MediaQuery.of(context).viewInsets,
-                         // child: MrfCard(
-                           //  jobID: 12,
-                             ////type: type,
-                           //),
-                         //));
-              // },
-             //),
-          // ),
-         //),
-      ],
-    );
+          //CircleAvatar(
+            // radius: 6.w,
+            // backgroundColor: Color(0xff036163),
+             //child: SizedBox(
+               //child: InkWell(
+                 //onTap: () {
+                   //showDialog(
+                     //  context: context,
+                       //builder: (context) => Padding(
+                         //    padding: MediaQuery.of(context).viewInsets,
+                           // child: MrfCard(
+                             //  jobID: 12,
+                               ////type: type,
+                             //),
+                           //));
+                // },
+               //),
+            // ),
+           //),
+        ],
+      );
+  
   }
 }
