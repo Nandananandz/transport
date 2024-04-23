@@ -23,11 +23,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailController =
-      TextEditingController(text: "mubz1@tc.com");
+  TextEditingController emailController = TextEditingController(text: "");
 
-  TextEditingController passwordController =
-      TextEditingController(text: "@Abcd123");
+  TextEditingController passwordController = TextEditingController(text: "");
   bool islogin = false;
 
   // controller call
@@ -98,6 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 5.17.h,
                           child: TextFormField(
                             controller: passwordController,
+                            obscureText: true,
                             keyboardType: TextInputType.visiblePassword,
                             textAlignVertical: TextAlignVertical.center,
                             decoration: InputDecoration(

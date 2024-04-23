@@ -6,9 +6,9 @@ import 'package:sizer/sizer.dart';
 import 'package:transportcordinate/Dashboard.dart';
 import 'package:transportcordinate/Screens/LoginScreen/LoginScreen.dart';
 
-
-
-String baseUrl = "https://api.greenworms.alpha.logidots.com/api/";
+String baseUrl = (false)
+    ? "http://192.168.1.8:3000/api/"
+    : "https://api.greenworms.alpha.logidots.com/api/";
 String login = "";
 void main() async {
   await WidgetsFlutterBinding.ensureInitialized();
@@ -17,16 +17,15 @@ void main() async {
 
   runApp(transportcordinate());
 }
-class transportcordinate extends StatelessWidget{
+
+class transportcordinate extends StatelessWidget {
   const transportcordinate({super.key});
   @override
-  Widget build(BuildContext context){
-             return Sizer(builder: (context, Orientation, DeviceType)
-             
-             {
-              return GetMaterialApp(
-                home: (login == "IN") ? Dashboard() : LoginScreen(),
-              );
-             });
+  Widget build(BuildContext context) {
+    return Sizer(builder: (context, Orientation, DeviceType) {
+      return GetMaterialApp(
+        home: (login == "IN") ? Dashboard() : LoginScreen(),
+      );
+    });
   }
 }

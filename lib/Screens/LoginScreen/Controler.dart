@@ -11,13 +11,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transportcordinate/Dashboard.dart';
 import 'package:transportcordinate/main.dart';
 
-
-
 class LoginController extends GetxController {
   TextEditingController emailController =
-      TextEditingController(text: "vrmm@logidots.com");
+      TextEditingController(text: "mubz1@tc.com");
   TextEditingController passwordController =
-      TextEditingController(text: "Vishnu123@");
+      TextEditingController(text: "@Abcd123");
   bool loading = false;
 
   loginSend() async {

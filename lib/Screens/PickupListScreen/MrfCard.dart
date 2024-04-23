@@ -19,8 +19,6 @@ class MrfCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    hctrl.selectedDriver = null;
-    hctrl.selectedmrf = null;
     return GetBuilder<homeController>(builder: (_) {
       return Material(
         color: Colors.transparent,
@@ -130,7 +128,10 @@ class MrfCard extends StatelessWidget {
                                 )))
                             .toList(),
                         onChanged: (value) {
+                          print(value);
                           hctrl.selectedDriver = value;
+                          vehicleNumber.text =
+                              hctrl.findVehicleID(hctrl.selectedDriver["id"]);
                           hctrl.update();
                         },
                       ),
@@ -181,8 +182,10 @@ class MrfCard extends StatelessWidget {
                     onTap: () async {
                       hctrl.assignloading = true;
                       hctrl.update();
+
+                      print(jobID);
                       final Response = await post(
-                        Uri.parse(baseUrl + "jobs/$jobID}/initiate"),
+                        Uri.parse(baseUrl + "jobs/$jobID/initiate"),
                         body: json.encode({
                           "driver_id": hctrl.selectedDriver["id"],
                           "mrf_facility_id": hctrl.selectedmrf["id"],
@@ -200,7 +203,7 @@ class MrfCard extends StatelessWidget {
                       if (Response.statusCode == 200 ||
                           Response.statusCode == 201) {
                         Navigator.of(context).pop();
-                        hctrl.joblist;
+                        hctrl.getjoblist();
                         Fluttertoast.showToast(
                             msg: "Assign Successfully Completed");
                       } else {

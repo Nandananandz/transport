@@ -17,7 +17,7 @@ class JobSheetCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 91.w,
-      height: 40.h,
+      height: 42.h,
       margin: EdgeInsets.symmetric(vertical: 2.5),
       decoration: BoxDecoration(
           border: Border.all(
@@ -99,6 +99,50 @@ class JobSheetCard extends StatelessWidget {
               Expanded(child: Container()),
             ],
           ),
+          if (jobData["status"] != null)
+            SizedBox(
+              height: 2.w,
+            ),
+          Container(
+            width: 80.w,
+            height: 0.01.h,
+            color: Colors.black.withOpacity(0.2.w),
+          ),
+          SizedBox(
+            height: 2.w,
+          ),
+          if (jobData["status"] != null)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: 1.7.h,
+                    height: 1.7.h,
+                    child: Image.asset("assets/jobid.png")),
+                SizedBox(
+                  width: 2.w,
+                ),
+                SizedBox(
+                  width: 39.4.w,
+                  child: Text(
+                    "Status ",
+                    style: GoogleFonts.lexend(
+                        fontSize: 11.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff6A6A6A)),
+                  ),
+                ),
+                Text(
+                  jobData["status"]["name"].toString(),
+                  textAlign: TextAlign.end,
+                  style: GoogleFonts.lexend(
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff000000)),
+                ),
+                Expanded(child: Container()),
+              ],
+            ),
           SizedBox(
             height: 2.w,
           ),
@@ -230,10 +274,16 @@ class JobSheetCard extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
+              homeController hctrl = Get.put(homeController());
+              hctrl.selectedDriver = null;
+              hctrl.selectedmrf = null;
               showDialog(
                   context: context,
-                  builder: ((context) => MrfCard(
-                        jobID: jobData["id"],
+                  builder: ((context) => Padding(
+                        padding: MediaQuery.of(context).viewInsets,
+                        child: MrfCard(
+                          jobID: jobData["id"],
+                        ),
                       )));
             },
             child: Container(

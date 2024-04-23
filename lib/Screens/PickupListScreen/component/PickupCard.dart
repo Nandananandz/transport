@@ -1,11 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:transportcordinate/Screens/HomeScreen/HomeScreen.dart';
+import 'package:transportcordinate/Screens/HomeScreen/components/Controller.dart';
 
 class pickupCard extends StatelessWidget {
   var jdata;
   pickupCard({super.key, required this.jdata});
-
+  homeController ctrl = Get.put(homeController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -203,7 +208,7 @@ class pickupCard extends StatelessWidget {
                 ),
               ),
               Text(
-                jdata["mrfJob"] ?? "--:--",
+                ctrl.FacilitName(jdata["mrf_facility_id"]),
                 textAlign: TextAlign.end,
                 style: GoogleFonts.lexend(
                     fontSize: 11.sp,
@@ -213,6 +218,49 @@ class pickupCard extends StatelessWidget {
               Expanded(child: Container()),
             ],
           ),
+          SizedBox(
+            height: 2.w,
+          ),
+          Container(
+            width: 80.w,
+            height: 0.01.h,
+            color: Colors.black.withOpacity(0.2.w),
+          ),
+          SizedBox(
+            height: 2.w,
+          ),
+          if (jdata["status"] != null)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: 1.7.h,
+                    height: 1.7.h,
+                    child: Image.asset("assets/jobid.png")),
+                SizedBox(
+                  width: 2.w,
+                ),
+                SizedBox(
+                  width: 39.4.w,
+                  child: Text(
+                    "Status ",
+                    style: GoogleFonts.lexend(
+                        fontSize: 11.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff6A6A6A)),
+                  ),
+                ),
+                Text(
+                  jdata["status"]["name"].toString(),
+                  textAlign: TextAlign.end,
+                  style: GoogleFonts.lexend(
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff000000)),
+                ),
+                Expanded(child: Container()),
+              ],
+            ),
           SizedBox(
             height: 2.w,
           ),

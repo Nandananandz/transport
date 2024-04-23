@@ -23,7 +23,7 @@ class _PickupListScreenState extends State<PickupListScreen> {
   List jobList = [];
   loadJobsAssigned() async {
     final Response = await get(
-      Uri.parse(baseUrl + "jobs/119/list-jobs?status=assigned"),
+      Uri.parse(baseUrl + "jobs/${hctrl.id}/list-jobs?status=initiated"),
       headers: {"Authorization": "Bearer ${hctrl.token}"},
     );
     print(Response.body);
@@ -57,9 +57,9 @@ class _PickupListScreenState extends State<PickupListScreen> {
                 for (var data in jobList)
                   //if (data["TrackingStatus"] != "initated")
 
-                    pickupCard(
-                      jdata: data,
-                    ),
+                  pickupCard(
+                    jdata: data,
+                  ),
                 SizedBox(
                   height: 3.h,
                 ),
@@ -68,24 +68,24 @@ class _PickupListScreenState extends State<PickupListScreen> {
           ),
         ),
         //CircleAvatar(
-          // radius: 6.w,
-          // backgroundColor: Color(0xff036163),
-           //child: SizedBox(
-             //child: InkWell(
-               //onTap: () {
-                 //showDialog(
-                   //  context: context,
-                     //builder: (context) => Padding(
-                       //    padding: MediaQuery.of(context).viewInsets,
-                         // child: MrfCard(
-                           //  jobID: 12,
-                             ////type: type,
-                           //),
-                         //));
-              // },
-             //),
-          // ),
-         //),
+        // radius: 6.w,
+        // backgroundColor: Color(0xff036163),
+        //child: SizedBox(
+        //child: InkWell(
+        //onTap: () {
+        //showDialog(
+        //  context: context,
+        //builder: (context) => Padding(
+        //    padding: MediaQuery.of(context).viewInsets,
+        // child: MrfCard(
+        //  jobID: 12,
+        ////type: type,
+        //),
+        //));
+        // },
+        //),
+        // ),
+        //),
       ],
     );
   }
